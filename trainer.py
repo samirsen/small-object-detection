@@ -211,8 +211,8 @@ class FasterRCNNTrainer(nn.Module):
         self.vis.save([self.vis.env])
         return save_path
 
-    def load(self, path, load_optimizer=True, parse_opt=False, map_location=None):
-        state_dict = t.load(path, map_location)
+    def load(self, path, load_optimizer=True, parse_opt=False):
+        state_dict = t.load(path)
         if 'model' in state_dict:
             self.faster_rcnn.load_state_dict(state_dict['model'])
         else:  # legacy way, for backward compatibility

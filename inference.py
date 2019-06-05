@@ -19,8 +19,7 @@ from SRGAN import Generator
 
 parser = argparse.ArgumentParser(description='Test Single Image')
 parser.add_argument('--upscale_factor', default=1, type=int, help='super resolution upscale factor')
-parser.add_argument('--test_mode', default='CPU', type=str, choices=['GPU', 'CPU'], help='using GPU or CPU')
-parser.add_argument('--image_name', type=str, help='test low resolution image name')
+parser.add_argument('--test_mode', default='GPU', type=str, choices=['GPU', 'CPU'], help='using GPU or CPU')
 parser.add_argument('--model_name', default='netG_epoch_4_100.pth', type=str, help='generator model epoch name')
 opt = parser.parse_args()
 
@@ -43,7 +42,7 @@ if TEST_MODE:
 
 else:
     gan_model.load_state_dict(torch.load('epochs/' + MODEL_NAME, map_location=lambda storage, loc: storage))
-    trainer.load('epochs/samir_fast_rcnn_epoch60.pth', map_location=lambda storage, loc: storage))
+    trainer.load('epochs/samir_fast_rcnn_epoch60.pth')
 
 image = read_image('misc/demo.jpg')
 image = Variable(ToTensor()(image), volatile=True).unsqueeze(0)
