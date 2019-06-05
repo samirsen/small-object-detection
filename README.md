@@ -1,2 +1,3 @@
 # small-object-detection
-Faster RCNN for xView satellite data challenge 
+Faster RCNN for Pascal VOC2007
+
